@@ -1,26 +1,31 @@
+/// Represents a two-dimensional vector, along with utility function to work with those vectors.
 #[derive(Debug, Clone, Copy)]
 pub struct Vector2 {
-    pub x: i32,
-    pub y: i32,
+    pub x: f32,
+    pub y: f32,
 }
 
 impl Vector2 {
-    /* Constants */
+    /// Returns a zeroed vector. Shorthand for
+    /// ```Vector2::new(0, 0)```
     pub fn zero() -> Vector2 {
-        return Vector2::new(0, 0)
+        return Vector2::new(0.0, 0.0)
     }
 
+    /// Returns a vector with 1 one both axes. Shorthand for
+    /// ```Vector2::new(1, 1)```
     pub fn one() -> Vector2 {
-        return Vector2::new(1, 1)
+        return Vector2::new(1.0, 1.0)
     }
 
-    /* Public methods */
-    pub fn new(in_x: i32, in_y: i32) -> Vector2 {
+    /// Returns a new instance of ```Vector2```
+    pub fn new(in_x: f32, in_y: f32) -> Vector2 {
         return Vector2{ x: in_x, y: in_y }
     }
 
+    /// Converts a ```Vector2``` to a easy to read string
     pub fn to_string(&self) -> String {
-        return std::format!("Vector2({}, {})", self.x, self.y);
+        return std::format!("Vector2(x = {}, y = {})", self.x, self.y);
     }
 
 }
