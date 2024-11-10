@@ -31,6 +31,14 @@ impl Vector2 {
         return *self / self.length();
     }
 
+    /// Normalize this vector. This function changes the values of this ```Vector2``` instance
+    pub fn normalize(&mut self) {
+        let self_len = self.length();
+
+        self.x = self.x / self_len;
+        self.y = self.y / self_len;
+    }
+
     /// Converts a ```Vector2``` to a easy to read string
     pub fn to_string(&self) -> String {
         return std::format!("Vector2(x = {}, y = {})", self.x, self.y);
