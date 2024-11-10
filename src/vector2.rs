@@ -31,7 +31,7 @@ impl Vector2 {
         return *self / self.length();
     }
 
-    /// Normalize this vector. This function changes the values of this ```Vector2``` instance
+    /// Normalize this vector. This method mutates the original vector
     pub fn normalize(&mut self) {
         let self_len = self.length();
 
