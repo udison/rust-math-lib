@@ -6,21 +6,29 @@ pub struct Vector2 {
 }
 
 impl Vector2 {
-    /// Returns a zeroed vector. Shorthand for
-    /// ```Vector2::new(0, 0)```
+    /// Returns a new instance of ```Vector2```
+    pub fn new(in_x: f32, in_y: f32) -> Vector2 {
+        return Vector2{ x: in_x, y: in_y }
+    }
+
+    /// Returns a zeroed vector. Shorthand for ```Vector2::new(0, 0)```
     pub fn zero() -> Vector2 {
         return Vector2::new(0.0, 0.0)
     }
 
-    /// Returns a vector with 1 one both axes. Shorthand for
-    /// ```Vector2::new(1, 1)```
+    /// Returns a vector with 1 one both axes. Shorthand for ```Vector2::new(1, 1)```
     pub fn one() -> Vector2 {
         return Vector2::new(1.0, 1.0)
     }
 
-    /// Returns a new instance of ```Vector2```
-    pub fn new(in_x: f32, in_y: f32) -> Vector2 {
-        return Vector2{ x: in_x, y: in_y }
+    /// Returns the length of this vector
+    pub fn length(&self) -> f32 {
+        return f32::sqrt(self.x * self.x + self.y * self.y);
+    }
+
+    /// Returns the normalized ```Vector2``` of this vector
+    pub fn normalized(&self) -> Vector2 {
+        return *self / self.length();
     }
 
     /// Converts a ```Vector2``` to a easy to read string
@@ -46,5 +54,21 @@ impl std::ops::Mul for Vector2 {
 
     fn mul(self, rhs: Vector2) -> Vector2 {
         return Vector2::new(self.x * rhs.x, self.y * rhs.y);
+    }
+}
+
+impl std::ops::Div for Vector2 {
+    type Output = Vector2;
+
+    fn div(self, rhs: Vector2) -> Vector2 {
+        return Vector2::new(self.x / rhs.x, self.y / rhs.y);
+    }
+}
+
+impl std::ops::Div<f32> for Vector2 {
+    type Output = Vector2;
+
+    fn div(self, rhs: f32) -> Vector2 {
+        return Vector2::new(self.x / rhs, self.y / rhs);
     }
 }
